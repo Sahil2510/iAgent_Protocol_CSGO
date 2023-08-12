@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import os
 import sys
 import time
@@ -425,7 +424,7 @@ if False:
 
 
 
-=======
+
 import os
 import sys
 import time
@@ -844,8 +843,8 @@ if False:
             # rename this file to earlier one
             os.rename(file_name,file_name2)
             print('\nrenaming', file_name, 'to', file_name2)
->>>>>>> 3be35e0 (Great Changes)
-=======
+
+
 import os
 import sys
 import time
@@ -1264,4 +1263,4 @@ if False:
             # rename this file to earlier one
             os.rename(file_name,file_name2)
             print('\nrenaming', file_name, 'to', file_name2)
->>>>>>> 99353e8 (Better Changes we have made)
+
