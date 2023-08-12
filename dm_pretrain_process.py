@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import os
 import sys
 import time
@@ -183,6 +184,8 @@ if False:
 
 
 =======
+=======
+>>>>>>> 99353e8 (Better Changes we have made)
 import os
 import sys
 import time
@@ -317,5 +320,9 @@ for file_num in range(starting_value,highest_num+1):
     print('SAVED', file_name)
     print('SAVED', h5file_name)
     print()
+<<<<<<< HEAD
     h5file.close()
 >>>>>>> 3be35e0 (Great Changes)
+=======
+    h5file.close()
+>>>>>>> 99353e8 (Better Changes we have made)

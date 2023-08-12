@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import ctypes
 
 SendInput = ctypes.windll.user32.SendInput
@@ -152,6 +153,8 @@ def release_right_click():
 
 
 =======
+=======
+>>>>>>> 99353e8 (Better Changes we have made)
 import ctypes
 
 SendInput = ctypes.windll.user32.SendInput
@@ -304,4 +307,7 @@ def release_right_click():
     SendInput(1, ctypes.pointer(x), ctypes.sizeof(x))
 
 
+<<<<<<< HEAD
 >>>>>>> 3be35e0 (Great Changes)
+=======
+>>>>>>> 99353e8 (Better Changes we have made)

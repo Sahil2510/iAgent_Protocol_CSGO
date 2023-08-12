@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import numpy as np
 import time
 import datetime
@@ -215,6 +216,8 @@ for weights_name in model_names:
 
 
 =======
+=======
+>>>>>>> 99353e8 (Better Changes we have made)
 import numpy as np
 import time
 import datetime
@@ -246,11 +249,19 @@ from config import *
 
 # save_dir = 'F:/02_saved_models_hdd'
 # save_dir = 'C:/Users/Tim Pearce/Google Drive/Google Drive all/05. misc geeky/03_csgo_bot/02_remotemodels' # load model from here
+<<<<<<< HEAD
 save_dir = 'C:/Program Files (x86)/Steam/steamapps/common/Counter-Strike Global Offensive/Trained_Models/' # load model from here
 save_dir_overflow = 'C:/Program Files (x86)/Steam/steamapps/common/Counter-Strike Global Offensive/Trained_Models/' # save stateful model to here
 
 # list of model names to convert to stateful version
 model_names = ['ak47_m41a_55k_sub_drop_a1']
+=======
+save_dir = 'C:/Program Files (x86)/Steam/steamapps/common/Counter-Strike Global Offensive/WASD_NPY/' # load model from here
+save_dir_overflow = 'C:/Program Files (x86)/Steam/steamapps/common/Counter-Strike Global Offensive/WASD_NPY/' # save stateful model to here
+
+# list of model names to convert to stateful version
+model_names = ['ak47_sub_55k_drop_d4']
+>>>>>>> 99353e8 (Better Changes we have made)
 # model_names = ['ak47_only_55k_b4_dmexpert_8']
 # model_names += ['ak47_only_55k_b4_dmexpert_12']
 # model_names += ['ak47_only_55k_b4_dmexpert_16']
@@ -430,4 +441,7 @@ for weights_name in model_names:
 
 
 
+<<<<<<< HEAD
 >>>>>>> 3be35e0 (Great Changes)
+=======
+>>>>>>> 99353e8 (Better Changes we have made)

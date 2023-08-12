@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # adapted from https://github.com/Sentdex/pygta5/blob/master/getkeys.py
 import win32api as wapi
 import time
@@ -81,6 +82,8 @@ if __name__ == "__main__":
     mouse_log_test()
 
 =======
+=======
+>>>>>>> 99353e8 (Better Changes we have made)
 # adapted from https://github.com/Sentdex/pygta5/blob/master/getkeys.py
 import win32api as wapi
 import time
@@ -162,4 +165,7 @@ def mouse_log_test():
 if __name__ == "__main__":
     mouse_log_test()
 
+<<<<<<< HEAD
 >>>>>>> 3be35e0 (Great Changes)
+=======
+>>>>>>> 99353e8 (Better Changes we have made)

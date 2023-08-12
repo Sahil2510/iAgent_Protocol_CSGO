@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import numpy as np
 import os
 import time
@@ -293,6 +294,8 @@ if os.name == 'nt': # if windows
                 pass
         return
 =======
+=======
+>>>>>>> 99353e8 (Better Changes we have made)
 import numpy as np
 import os
 import time
@@ -585,5 +588,9 @@ if os.name == 'nt': # if windows
             while time.time() < loop_start_time + 1/loop_fps:
                 time.sleep(0.001)
                 pass
+<<<<<<< HEAD
         return
 >>>>>>> 3be35e0 (Great Changes)
+=======
+        return
+>>>>>>> 99353e8 (Better Changes we have made)

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # this script provides skeleton code for opening up different datasets
 # both hdf5 image files and the accompanying meta data
 
@@ -44,6 +45,8 @@ for file_name_stub in ['dm_july2021_', 'dm_july2021_expert_', 'dm_inferno_expert
 
 
 =======
+=======
+>>>>>>> 99353e8 (Better Changes we have made)
 # this script provides skeleton code for opening up different datasets
 # both hdf5 image files and the accompanying meta data
 
@@ -88,4 +91,7 @@ for file_name_stub in ['dm_july2021_', 'dm_july2021_expert_', 'dm_inferno_expert
     fig.show()
 
 
+<<<<<<< HEAD
 >>>>>>> 3be35e0 (Great Changes)
+=======
+>>>>>>> 99353e8 (Better Changes we have made)

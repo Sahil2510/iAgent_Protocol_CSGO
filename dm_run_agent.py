@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import os
 # os.environ['CUDA_VISIBLE_DEVICES'] = '-1' # to force CPU
 import time
@@ -661,6 +662,8 @@ for training_iter in range(n_iters_total):
 
 
 =======
+=======
+>>>>>>> 99353e8 (Better Changes we have made)
 import os
 # os.environ['CUDA_VISIBLE_DEVICES'] = '-1' # to force CPU
 import time
@@ -728,15 +731,26 @@ mouse_x_mid, mouse_y_mid = mouse_check()
 mins_per_iter = 10
 
 # load model from
+<<<<<<< HEAD
 model_names = ['ak47_m41a_55k_sub_drop_a1'] # our best performing dm agent, pretrained and finetuned on expert dm data
+=======
+model_names = ['ak47_sub_55k_drop_d4_dmexpert_28'] # our best performing dm agent, pretrained and finetuned on expert dm data
+>>>>>>> 99353e8 (Better Changes we have made)
 # model_names = ['ak47_sub_55k_drop_d4'] # pretrained agent
 # model_names = ['ak47_sub_55k_drop_d4_aimexpertv2_60'] # pretrained and finetuned on expert aim mode
 # model_names = ['July_remoterun7_g9_4k_n32_recipe_ton96__e14'] # pretrained on full dataset
 model_save_dir = os.path.join(os.getcwd(),'model')
+<<<<<<< HEAD
 model_save_dir_overflow = 'C:/Program Files (x86)/Steam/steamapps/common/Counter-Strike Global Offensive/Trained_Models/' # could also be in here
 
 # folder to save pickle about rewards etc
 pickle_reward_folder = 'C:/Program Files (x86)/Steam/steamapps/common/Counter-Strike Global Offensive/Trained_Models/'
+=======
+model_save_dir_overflow = 'F:/2021/01_remotemodels_overflow' # could also be in here
+
+# folder to save pickle about rewards etc
+pickle_reward_folder = ''
+>>>>>>> 99353e8 (Better Changes we have made)
 pickle_reward_name = 'rewards_.p'
 
 pickle_reward_path = os.path.join(pickle_reward_folder, pickle_reward_name)
@@ -1321,4 +1335,8 @@ for training_iter in range(n_iters_total):
 
 
 
+<<<<<<< HEAD
 >>>>>>> 3be35e0 (Great Changes)
+=======
+
+>>>>>>> 99353e8 (Better Changes we have made)

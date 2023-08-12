@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import os
 import time
 import cv2
@@ -117,6 +118,8 @@ for file_id in file_frame_ids.keys():
     cv2.destroyAllWindows()
 
 =======
+=======
+>>>>>>> 99353e8 (Better Changes we have made)
 import os
 import time
 import cv2
@@ -234,4 +237,7 @@ for file_id in file_frame_ids.keys():
 
     cv2.destroyAllWindows()
 
+<<<<<<< HEAD
 >>>>>>> 3be35e0 (Great Changes)
+=======
+>>>>>>> 99353e8 (Better Changes we have made)

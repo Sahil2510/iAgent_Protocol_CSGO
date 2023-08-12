@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 timestamp = 1637660992
 
 #signatures
@@ -157,6 +158,8 @@ m_vecViewOffset = 264
 m_viewPunchAngle = 12336
 m_zoomLevel = 13280
 =======
+=======
+>>>>>>> 99353e8 (Better Changes we have made)
 timestamp = 1686124261
 
 #signatures
@@ -316,4 +319,7 @@ m_vecVelocity = 276
 m_vecViewOffset = 264
 m_viewPunchAngle = 12336
 m_zoomLevel = 13280
+<<<<<<< HEAD
 >>>>>>> 3be35e0 (Great Changes)
+=======
+>>>>>>> 99353e8 (Better Changes we have made)

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import os
 import time
 import mss
@@ -398,6 +399,8 @@ if False:
             #         potential_i.append(i)
 
 =======
+=======
+>>>>>>> 99353e8 (Better Changes we have made)
 import os
 import time
 import mss
@@ -453,7 +456,11 @@ save_name = 'dm_test_expert_' # stub name of file to save as
 
 folder_name = 'C:/Program Files (x86)/Steam/steamapps/common/Counter-Strike Global Offensive/WASD_NPY/'
 # starting_value = get_highest_num(save_name, folder_name)+1 # set to one larger than whatever found so far
+<<<<<<< HEAD
 starting_value = 35
+=======
+starting_value = 18
+>>>>>>> 99353e8 (Better Changes we have made)
 
 is_show_img = False
 
@@ -795,4 +802,7 @@ if False:
             #     if np.abs(val_1)>1e-10 or np.abs(val_2)>1e-10 or np.abs(val_3)>1e-10:
             #         print(i,val_1, val_2, val_3)
             #         potential_i.append(i)
+<<<<<<< HEAD
 >>>>>>> 3be35e0 (Great Changes)
+=======
+>>>>>>> 99353e8 (Better Changes we have made)

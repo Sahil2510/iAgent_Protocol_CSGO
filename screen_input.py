@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # adapted from: https://github.com/Sentdex/pygta5/blob/master/grabscreen.py
 import cv2
 import numpy as np
@@ -152,6 +153,8 @@ if __name__ == "__main__":
 
 
 =======
+=======
+>>>>>>> 99353e8 (Better Changes we have made)
 # adapted from: https://github.com/Sentdex/pygta5/blob/master/grabscreen.py
 import cv2
 import numpy as np
@@ -304,4 +307,7 @@ if __name__ == "__main__":
     fps_capture_test()
 
 
+<<<<<<< HEAD
 >>>>>>> 3be35e0 (Great Changes)
+=======
+>>>>>>> 99353e8 (Better Changes we have made)

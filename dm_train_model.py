@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import os
 os.environ["CUDA_VISIBLE_DEVICES"]="0" # single GPU
 # os.environ["CUDA_VISIBLE_DEVICES"]="0,1,2,3" # use multiple GPUs
@@ -817,6 +818,8 @@ print('took',np.round(time.time()-start_time,1),' secs\n')
 
 
 =======
+=======
+>>>>>>> 99353e8 (Better Changes we have made)
 import os
 os.environ["CUDA_VISIBLE_DEVICES"]="0" # single GPU
 # os.environ["CUDA_VISIBLE_DEVICES"]="0,1,2,3" # use multiple GPUs
@@ -852,13 +855,21 @@ l_rate = 0.0001
 # training data location
 file_name_stub = 'dm_test_expert_' # dm_july2021_ aim_july2021_expert_ dm_july2021_expert_
 # file_name_stub = 'dm_6nov_aim_' 
+<<<<<<< HEAD
 folder_name = 'C:/Program Files (x86)/Steam/steamapps/common/Counter-Strike Global Offensive/Test/' 
+=======
+folder_name = 'C:/Program Files (x86)/Steam/steamapps/common/Counter-Strike Global Offensive/WASD_NPY/' 
+>>>>>>> 99353e8 (Better Changes we have made)
 starting_num = 1 # lowest file name to use in training
 highest_num = 2 # highest file name to use in training 4000, 5500, 190, 45, 10
 
 # whether to save model if training and where
 model_name = 'ak47_m41a_55k_sub_drop_'
+<<<<<<< HEAD
 save_dir = 'C:/Program Files (x86)/Steam/steamapps/common/Counter-Strike Global Offensive/Test/'
+=======
+save_dir = 'C:/Program Files (x86)/Steam/steamapps/common/Counter-Strike Global Offensive/WASD_NPY/'
+>>>>>>> 99353e8 (Better Changes we have made)
 SAVE_MODEL = True
 
 # whether to resume training from a previous model
@@ -872,7 +883,11 @@ SUB_TYPE = 'ak' # ak or akm4 or all
 OVERSAMPLE_LOWFREQ_REGION=False
 
 # where are the metadata .npy files? only needed if subselecting
+<<<<<<< HEAD
 curr_vars_folder = 'C:/Program Files (x86)/Steam/steamapps/common/Counter-Strike Global Offensive/Test/'
+=======
+curr_vars_folder = 'C:/Program Files (x86)/Steam/steamapps/common/Counter-Strike Global Offensive/WASD_NPY/'
+>>>>>>> 99353e8 (Better Changes we have made)
 if file_name_stub == 'dm_test_expert_':
     curr_vars_stub = 'currvarsv2_dm_test_expert_'
 else:
@@ -1634,4 +1649,7 @@ if file_name_stub == 'dm_test_expert_' or file_name_stub == 'dm_mirage_expert_' 
 
 print('took',np.round(time.time()-start_time,1),' secs\n')
 
+<<<<<<< HEAD
 >>>>>>> 3be35e0 (Great Changes)
+=======
+>>>>>>> 99353e8 (Better Changes we have made)

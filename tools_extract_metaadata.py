@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # just scrape meta part from numpy files
 # after running infer actions 
 # get [img_small,curr_vars,infer_a
@@ -60,6 +61,8 @@ for file_chunk in range(0,1):
 
 
 =======
+=======
+>>>>>>> 99353e8 (Better Changes we have made)
 # just scrape meta part from numpy files
 # after running infer actions 
 # get [img_small,curr_vars,infer_a
@@ -93,7 +96,11 @@ folder_name = 'C:/Program Files (x86)/Steam/steamapps/common/Counter-Strike Glob
 # for file_chunk in range(0,40):
 for file_chunk in range(0,1):
     save_dict={}
+<<<<<<< HEAD
     n_filer_per_chunk=34
+=======
+    n_filer_per_chunk=2
+>>>>>>> 99353e8 (Better Changes we have made)
     for file_num in range(file_chunk*n_filer_per_chunk+1,(file_chunk+1)*n_filer_per_chunk+1):
         print('file_num',file_num,end='\r')
         file_name = folder_name+file_name_stub + str(file_num) + '.npy'
@@ -120,4 +127,7 @@ for file_chunk in range(0,1):
     print('SAVED')
 
 
+<<<<<<< HEAD
 >>>>>>> 3be35e0 (Great Changes)
+=======
+>>>>>>> 99353e8 (Better Changes we have made)

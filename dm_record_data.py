@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import os
 import time
 import mss
@@ -321,6 +322,8 @@ while True:
     wait_for_loop_end(loop_start_time, loop_fps, n_loops, is_clear_decals=True)
 
 =======
+=======
+>>>>>>> 99353e8 (Better Changes we have made)
 # import os
 # import time
 # import mss
@@ -970,4 +973,7 @@ while True:
         # will be running fwd pass through NN
 
     wait_for_loop_end(loop_start_time, loop_fps, n_loops, is_clear_decals=True)
+<<<<<<< HEAD
 >>>>>>> 3be35e0 (Great Changes)
+=======
+>>>>>>> 99353e8 (Better Changes we have made)
