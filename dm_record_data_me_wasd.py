@@ -1,4 +1,3 @@
-
 import os
 import time
 import mss
@@ -52,14 +51,14 @@ from dm_hazedumper_offsets import *
 
 save_name = 'dm_test_expert_' # stub name of file to save as
 
-folder_name = 'F:/2021/csgo_bot_train_july2021/'
+folder_name = 'C:/Program Files (x86)/Steam/steamapps/common/Counter-Strike Global Offensive/WASD_NPY/'
 # starting_value = get_highest_num(save_name, folder_name)+1 # set to one larger than whatever found so far
 starting_value = 1
 
 is_show_img = False
 
 # now find the requried process and where two modules (dll files) are in RAM
-hwin_csgo = win32gui.FindWindow(0, ('counter-Strike: Global Offensive'))
+hwin_csgo = win32gui.FindWindow(0, ('Counter-Strike: Global Offensive - Direct3D 9'))
 if(hwin_csgo):
     pid=win32process.GetWindowThreadProcessId(hwin_csgo)
     handle = pymem.Pymem()
