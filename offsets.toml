@@ -1,36 +1,36 @@
 
 # client_dll
-    dwEntityList: 24910160
-    dwForceAttack: 23862896
-    dwForceAttack2: 23863040
-    dwForceBackward: 23863616
-    dwForceCrouch: 23864336
-    dwForceForward: 23863472
-    dwForceJump: 23864192
-    dwForceLeft: 23863760
-    dwForceRight: 23863904
-    dwGameEntitySystem: 26137168
-    dwGameEntitySystem_getHighestEntityIndex: 5392
-    dwGameRules: 25288776
-    dwGlobalVars: 23846040
-    dwGlowManager: 25286576
-    dwInterfaceLinkList: 26324712
-    dwLocalPlayerController: 25235272
-    dwLocalPlayerPawn: 23891768
-    dwPlantedC4: 25315976
-    dwPrediction: 23891456
-    dwSensitivity: 25292104
-    dwSensitivity_sensitivity: 64
-    dwViewAngles: 25693632
-    dwViewMatrix: 25297232
-    dwViewRender: 25299352
+dwEntityList: 24910160
+dwForceAttack: 23862896
+dwForceAttack2: 23863040
+dwForceBackward: 23863616
+dwForceCrouch: 23864336
+dwForceForward: 23863472
+dwForceJump: 23864192
+dwForceLeft: 23863760
+dwForceRight: 23863904
+dwGameEntitySystem: 26137168
+dwGameEntitySystem_getHighestEntityIndex: 5392
+dwGameRules: 25288776
+dwGlobalVars: 23846040
+dwGlowManager: 25286576
+dwInterfaceLinkList: 26324712
+dwLocalPlayerController: 25235272
+dwLocalPlayerPawn: 23891768
+dwPlantedC4: 25315976
+dwPrediction: 23891456
+dwSensitivity: 25292104
+dwSensitivity_sensitivity: 64
+dwViewAngles: 25693632
+dwViewMatrix: 25297232
+dwViewRender: 25299352
 # engine2_dll
-    dwBuildNumber: 5112788
-    dwNetworkGameClient: 5110152
-    dwNetworkGameClient_getLocalPlayer: 240
-    dwNetworkGameClient_maxClients: 592
-    dwNetworkGameClient_signOnState: 576
-    dwWindowHeight: 5860892
-    dwWindowWidth: 5860888
+dwBuildNumber: 5112788
+dwNetworkGameClient: 5110152
+dwNetworkGameClient_getLocalPlayer: 240
+dwNetworkGameClient_maxClients: 592
+dwNetworkGameClient_signOnState: 576
+dwWindowHeight: 5860892
+dwWindowWidth: 5860888
 # inputsystem_dll
-    dwInputSystem: 218976
+dwInputSystem: 218976
