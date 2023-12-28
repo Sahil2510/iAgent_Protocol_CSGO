@@ -1,5 +1,6 @@
 timestamp = 1703762752
 
+# Sahil2510-patch-2
 # Signatures
 anim_overlays = 10640
 clientstate_choked_commands = 19760
@@ -26,6 +27,18 @@ dwForceForward = 52621012
 dwForceJump = 86756744
 dwForceLeft = 52620880
 dwForceRight = 52620892
+
+[signatures]
+dwBuildNumber = 140727356198736
+dwEntityList = 140726118546180
+dwForceAttack = 140726130219136
+dwForceAttack2 = 140726130219120
+dwForceBackward = 140726119903786
+dwForceCrouch = 140726119904021
+dwForceForward = 140726119903668
+dwForceJump = 140726119903905
+dwForceLeft = 140726119903423
+dwForceRight = 140726119903553
 dwGameEntitySystem = 140726118738229
 dwGameEntitySystem_getHighestEntityIndex = 140726118571600
 dwGameRules = 140726120024232
@@ -161,3 +174,6 @@ m_vecVelocity = 276
 m_vecViewOffset = 264
 m_viewPunchAngle = 12336
 m_zoomLevel = 13280
+dwWindowHeight = 140727357725125
+dwWindowWidth = 140727357725117
+
