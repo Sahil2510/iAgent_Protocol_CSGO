@@ -1,50 +1,35 @@
+timestamp = 1703762752
 
-# client_dll
-dwEntityList: 24910160
-dwForceAttack: 23862896
-dwForceAttack2: 23863040
-dwForceBackward: 23863616
-dwForceCrouch: 23864336
-dwForceForward: 23863472
-dwForceJump: 23864192
-dwForceLeft: 23863760
-dwForceRight: 23863904
-dwGameEntitySystem: 26137168
-dwGameEntitySystem_getHighestEntityIndex: 5392
-dwGameRules: 25288776
-dwGlobalVars: 23846040
-dwGlowManager: 25286576
-dwInterfaceLinkList: 26324712
-dwLocalPlayerController: 25235272
-dwLocalPlayer: 14596508
-m_iObserverMode: 13192
-m_hObserverTarget: 13212
-m_iHealth: 256
-m_iFOVStart: 12788
-m_bIsScoped: 39284
-m_vecOrigin: 312
-m_vecViewOffset: 264
-m_vecVelocity: 276
-dwClientState: 5894556
-dwClientState_ViewAngles: 19856
-m_hActiveWeapon: 12040
-m_iItemDefinitionIndex: 12218
-m_iClip1: 12916
-dwLocalPlayerPawn: 23891768
-dwPlantedC4: 25315976
-dwPrediction: 23891456
-dwSensitivity: 25292104
-dwSensitivity_sensitivity: 64
-dwViewAngles: 25693632
-dwViewMatrix: 25297232
-dwViewRender: 25299352
-# engine2_dll
-dwBuildNumber: 5112788
-dwNetworkGameClient: 5110152
-dwNetworkGameClient_getLocalPlayer: 240
-dwNetworkGameClient_maxClients: 592
-dwNetworkGameClient_signOnState: 576
-dwWindowHeight: 5860892
-dwWindowWidth: 5860888
-# inputsystem_dll
-dwInputSystem: 218976
+[signatures]
+dwBuildNumber = 140727356198736
+dwEntityList = 140726118546180
+dwForceAttack = 140726130219136
+dwForceAttack2 = 140726130219120
+dwForceBackward = 140726119903786
+dwForceCrouch = 140726119904021
+dwForceForward = 140726119903668
+dwForceJump = 140726119903905
+dwForceLeft = 140726119903423
+dwForceRight = 140726119903553
+dwGameEntitySystem = 140726118738229
+dwGameEntitySystem_getHighestEntityIndex = 140726118571600
+dwGameRules = 140726120024232
+dwGlobalVars = 140726119818250
+dwGlowManager = 140726120062544
+dwInputSystem = 140728277805295
+dwInterfaceLinkList = 140726129653712
+dwLocalPlayerController = 140726118114704
+dwLocalPlayerPawn = 140726120324224
+dwNetworkGameClient = 140727356234363
+dwNetworkGameClient_getLocalPlayer = 140727356286940
+dwNetworkGameClient_maxClients = 140727356286960
+dwNetworkGameClient_signOnState = 140727356240350
+dwPlantedC4 = 140726120909286
+dwPrediction = 140726120324224
+dwSensitivity = 140726119466710
+dwSensitivity_sensitivity = 140726114564137
+dwViewAngles = 140726119737728
+dwViewMatrix = 140726114601715
+dwViewRender = 140726119762617
+dwWindowHeight = 140727357725125
+dwWindowWidth = 140727357725117
