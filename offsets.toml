@@ -16,30 +16,53 @@ dwClientState_MaxPlayer = 904
 dwClientState_PlayerInfo = 21184
 dwClientState_State = 264
 dwClientState_ViewAngles = 19856
-dwEntityList = 140726104587012
-dwForceAttack = 140726116259968
-dwForceAttack2 = 140726116259952
-dwForceBackward = 140726105944618
-dwForceForward = 140726105944500
-dwForceJump = 140726105944737
-dwForceLeft = 140726105944255
-dwForceRight = 140726105944385
+dwEntityList = 24910160
+dwForceAttack = 23862896
+dwForceAttack2 = 23863040
+dwForceBackward = 23863616
+dwForceForward = 23863472
+dwForceJump = 23864192
+dwForceLeft = 23863760
+dwForceRight = 23863904
 dwGameDir = 6532608
+dwGameRules: 25288776
+dwLocalPlayerController: 25235272
+dwGameEntitySystem_getHighestEntityIndex: 5392
+dwGameEntitySystem: 26137168
 dwGameRulesProxy = 140726106065064
 dwGetAllClasses = 14733220
-dwGlobalVars = 140726105859082
-dwGlowObjectManager = 140726106103376
+dwGlobalVars = 23846040
+dwGlowManager = 25286576
 dwInput = 140728656734447
-dwInterfaceLinkList = 140726115694544
-dwLocalPlayer = 140726104155536
+dwInterfaceLinkList = 26324712
+# dwLocalPlayer = 140726104155536
+dwLocalPlayer: 23891768
+dwPlantedC4: 25315976
+dwPrediction: 23891456
+
 dwMouseEnable = 86221408
 dwMouseEnablePtr = 86221360
 dwPlayerResource = 52613584
 dwRadarBase = 86211332
-dwSensitivity = 140726105507542
+dwSensitivity = 25292104
+dwSensitivity_sensitivity: 64
+dwViewAngles: 25693632
 dwSensitivityPtr = 140726105507542
+dwViewMatrix: 25297232
+dwViewRender: 25299352
+
+#engine2_dll
+dwBuildNumber: 5112788
+dwNetworkGameClient: 5110152
+dwNetworkGameClient_getLocalPlayer: 240
+dwNetworkGameClient_maxClients: 592
+dwNetworkGameClient_signOnState: 576
+dwWindowHeight: 5860892
+dwWindowWidth: 5860888
+
+# inputsystem.dll
+dwInputSystem: 218976
 dwSetClanTag = 580272
-dwViewMatrix = 140726100642547
 dwWeaponTable = 86374108
 dwWeaponTableIndex = 12908
 dwYawPtr = 14612808
