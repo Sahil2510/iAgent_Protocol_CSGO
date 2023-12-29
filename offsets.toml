@@ -36,7 +36,7 @@ dwGlowManager = 25286576
 dwInput = 140728656734447
 dwInterfaceLinkList = 26324712
 # dwLocalPlayer = 140726104155536
-dwLocalPlayer: 23891768
+dwLocalPlayerPawn: 23891768
 dwPlantedC4: 25315976
 dwPrediction: 23891456
 
