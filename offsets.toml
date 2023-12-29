@@ -1,6 +1,6 @@
 timestamp = 1693948329
 
-[signatures]
+# [signatures]
 anim_overlays = 10640
 clientstate_choked_commands = 19760
 clientstate_delta_ticks = 372
@@ -60,7 +60,7 @@ model_ambient_min = 5902740
 set_abs_angles = 2002880
 set_abs_origin = 2002432
 
-[netvars]
+# [netvars]
 cs_gamerules_data = 0
 m_ArmorValue = 71628
 m_Collision = 800
