@@ -16,7 +16,7 @@ dwClientState_MaxPlayer = 904
 dwClientState_PlayerInfo = 21184
 dwClientState_State = 264
 dwClientState_ViewAngles = 19856
-dwEntityList = 24910160
+dwEntityList = 81077260
 dwForceAttack = 23862896
 dwForceAttack2 = 23863040
 dwForceBackward = 23863616
@@ -35,9 +35,10 @@ dwGameRules: 25288776
 dwGetAllClasses = 14733220
 dwGlobalVars = 23846040
 dwGlowManager = 25286576
+dwGlowObjectManager = 86614648
 dwInput = 86369792
 dwInterfaceLinkList = 26324712
-dwLocalPlayer = 14596508
+dwLocalPlayer = 138843396
 dwLocalPlayerPawn: 23891768
 dwLocalPlayerController: 25235272
 dwPlantedC4: 25315976
