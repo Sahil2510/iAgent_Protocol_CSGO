@@ -37,6 +37,8 @@ m_iTeamNum = 959
 m_vecOrigin = 4644
 dwEntityList = 24910160
 dwLocalPlayer = 25235272
+dwViewAngles = 25693632
+
 dwViewMatrix = 25297232
 dwPawnHealth = 2040
 dwPlayerPawn = 2028
@@ -45,3 +47,12 @@ m_bIsLocalPlayerController = 1744
 m_iHealth = 812
 m_iTeamNum = 959
 m_vOldOrigin = 4644
+
+m_iObserverMode = 13192
+m_hObserverTarget = 13212
+m_iFOVStart = 12792
+m_vecVelocity = 276
+dwClientState = 5894556
+m_hActiveWeapon = 12040
+m_iItemDefinitionIndex = 12218
+m_iClip1 = 12916
