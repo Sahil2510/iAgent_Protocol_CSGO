@@ -56,3 +56,5 @@ dwClientState = 5894556
 m_hActiveWeapon = 12040
 m_iItemDefinitionIndex = 12218
 m_iClip1 = 12916
+m_bIsScoped = 39284
+m_vecViewOffset = 264
