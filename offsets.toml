@@ -16,55 +16,58 @@ dwClientState_MaxPlayer = 904
 dwClientState_PlayerInfo = 21184
 dwClientState_State = 264
 dwClientState_ViewAngles = 19856
-dwEntityList = 81077260
+dwEntityList = 24910160
 dwForceAttack = 23862896
 dwForceAttack2 = 23863040
 dwForceBackward = 23863616
 dwForceForward = 23863472
-dwForceCrouch: 23864336
+dwForceCrouch = 23864336
 dwForceJump = 23864192
 dwForceLeft = 23863760
 dwForceRight = 23863904
 dwGameDir = 6532608
-dwGameRules: 25288776
-dwLocalPlayerController: 25235272
-dwGameEntitySystem_getHighestEntityIndex: 5392
-dwGameEntitySystem: 26137168
+dwGameRules = 25288776
+dwLocalPlayerController = 25235272
+dwGameEntitySystem_getHighestEntityIndex = 5392
+dwGameEntitySystem = 26137168
 dwGameRulesProxy = 87229844
-dwGameRules: 25288776
+dwGameRules = 25288776
 dwGetAllClasses = 14733220
 dwGlobalVars = 23846040
 dwGlowManager = 25286576
 dwGlowObjectManager = 86614648
 dwInput = 86369792
 dwInterfaceLinkList = 26324712
-dwLocalPlayer = 138843396
-dwLocalPlayerPawn: 23891768
-dwLocalPlayerController: 25235272
-dwPlantedC4: 25315976
-dwPrediction: 23891456
+dwLocalPlayer = 25235272
+dwLocalPlayerPawn = 23891768
+dwPlayerPawn = 2028
+dwLocalPlayerController = 25235272
+dwPlantedC4 = 25315976
+dwPrediction = 23891456
 dwMouseEnable = 86221408
 dwMouseEnablePtr = 86221360
 dwPlayerResource = 52613584
 dwRadarBase = 86211332
 dwSensitivity = 25292104
-dwSensitivity_sensitivity: 64
-dwViewAngles: 25693632
+dwSensitivity_sensitivity = 64
+dwViewAngles = 25693632
 dwSensitivityPtr = 14613432
-dwViewMatrix: 25297232
-dwViewRender: 25299352
+dwSanitizedName = 1872
+dwViewMatrix = 25297232
+dwViewRender = 25299352
 
 #engine2_dll
-dwBuildNumber: 5112788
-dwNetworkGameClient: 5110152
-dwNetworkGameClient_getLocalPlayer: 240
-dwNetworkGameClient_maxClients: 592
-dwNetworkGameClient_signOnState: 576
-dwWindowHeight: 5860892
-dwWindowWidth: 5860888
+dwBuildNumber = 5112788
+BuildNumber = 13983
+dwNetworkGameClient = 5110152
+dwNetworkGameClient_getLocalPlayer = 240
+dwNetworkGameClient_maxClients = 592
+dwNetworkGameClient_signOnState = 576
+dwWindowHeight = 5860892
+dwWindowWidth = 5860888
 
 # inputsystem.dll
-dwInputSystem: 218976
+dwInputSystem = 218976
 dwSetClanTag = 580272
 dwWeaponTable = 86374108
 dwWeaponTableIndex = 12908
@@ -88,7 +91,7 @@ set_abs_origin = 2002432
 
 # [netvars]
 cs_gamerules_data = 0
-m_ArmorValue = 71628
+m_ArmorValue = 5392
 m_Collision = 800
 m_CollisionGroup = 1140
 m_Local = 12236
@@ -109,8 +112,9 @@ m_bGunGameImmunity = 39312
 m_bHasDefuser = 71644
 m_bHasHelmet = 71616
 m_bInReload = 12981
-m_bIsDefusing = 39292
+m_bIsDefusing = 5040
 m_bIsQueuedMatchmaking = 116
+m_bIsLocalPlayerController = 1744
 m_bIsScoped = 39284
 m_bIsValveDS = 124
 m_bSpotted = 2365
@@ -123,7 +127,8 @@ m_clrRender = 112
 m_dwBoneMatrix = 9896
 m_fAccuracyPenalty = 13120
 m_fFlags = 260
-m_flC4Blow = 10656
+m_flC4Blow = 3760
+m_flNextBeep = 3756
 m_flCustomAutoExposureMax = 2528
 m_flCustomAutoExposureMin = 2524
 m_flCustomBloomScale = 2532
@@ -132,13 +137,15 @@ m_flDefuseLength = 10680
 m_flFallbackWear = 12768
 m_flFlashDuration = 66672
 m_flFlashMaxAlpha = 66668
+m_flFlashOverlayAlpha = 5220
 m_flLastBoneSetupTime = 10536
 m_flLowerBodyYawTarget = 39644
 m_flNextAttack = 11648
 m_flNextPrimaryAttack = 12872
 m_flSimulationTime = 616
-m_flTimerLength = 10660
+m_flTimerLength = 3768
 m_hActiveWeapon = 12040
+m_hPlayerPawn = 2028
 m_hBombDefuser = 10692
 m_hMyWeapons = 11784
 m_hObserverTarget = 13212
@@ -146,6 +153,7 @@ m_hOwner = 10716
 m_hOwnerEntity = 332
 m_hViewModel = 13064
 m_iAccountID = 12248
+m_iAccount = 64
 m_iClip1 = 12916
 m_iCompetitiveRanking = 6788
 m_iCompetitiveWins = 7048
@@ -155,14 +163,14 @@ m_iEntityQuality = 12220
 m_iFOV = 12788
 m_iFOVStart = 12792
 m_iGlowIndex = 66696
-m_iHealth = 256
+m_iHealth = 812
 m_iItemDefinitionIndex = 12218
 m_iItemIDHigh = 12240
 m_iMostRecentModelBoneCounter = 9872
 m_iObserverMode = 13192
 m_iShotsFired = 66528
 m_iState = 12904
-m_iTeamNum = 244
+m_iTeamNum = 959
 m_lifeState = 607
 m_nBombSite = 10644
 m_nFallbackPaintKit = 12760
@@ -172,12 +180,19 @@ m_nForceBone = 9868
 m_nModelIndex = 600
 m_nTickBase = 13376
 m_nViewModelIndex = 10704
+m_pInGameMoneyServices = 1792
+m_pGameSceneNode = 784
+m_pClippingWeapon = 4784
 m_rgflCoordinateFrame = 1092
 m_szCustomName = 12364
+m_sSanitizedPlayerName = 1872
+m_szName = 3096
 m_szLastPlaceName = 13764
 m_thirdPersonViewAngles = 12776
-m_vecOrigin = 312
+m_vecOrigin = 4644
+m_vecAbsOrigin = 200
 m_vecVelocity = 276
 m_vecViewOffset = 264
+m_vOldOrigin = 4644
 m_viewPunchAngle = 12336
 m_zoomLevel = 13280
