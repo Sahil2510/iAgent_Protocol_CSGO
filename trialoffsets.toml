@@ -129,6 +129,7 @@ m_flTimerLength = 3768
 m_hActiveWeapon = 96
 m_hBombDefuser = 3800
 m_hMyWeapons = 72
+m_hPawn = 1548
 m_hController = 4668
 m_hObserverTarget = 68
 m_hOwner = 10716
