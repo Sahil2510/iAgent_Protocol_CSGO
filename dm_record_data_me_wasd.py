@@ -9,7 +9,7 @@ import math
 import random
 import win32api as wapi
 import win32api
-import pyautogui
+import win32gui
 import win32process
 import ctypes
 from ctypes  import *
@@ -43,18 +43,18 @@ from meta_utils import *
 # first make sure offset list is reset (after csgo updates may shift about)
 if True:
     print('updating offsets')
-    offsets = requests.get('https://raw.githubusercontent.com/Sahil2510/iAgent_Protocol_CSGO/main/trialoffsets.toml').text
-    
+    offsets = requests.get('https://raw.githubusercontent.com/frk1/hazedumper/master/csgo.toml').text
     del requests
-    update_offsets(offsets)
+    # update_offsets(offsets)
 
 from dm_hazedumper_offsets import *
 
 save_name = 'dm_test_expert_' # stub name of file to save as
 
-folder_name = 'D:/CS2npy/trial/'
+folder_name = 'D:/NPY_Files/'
 # starting_value = get_highest_num(save_name, folder_name)+1 # set to one larger than whatever found so far
 starting_value = 1
+
 
 is_show_img = False
 
@@ -71,22 +71,23 @@ else:
     sys.exit()
 
 # now find two dll files needed
-list_of_modules=handle.list_modules()
-while(list_of_modules!=None):
-    tmp=next(list_of_modules)
+list_of_modules = handle.list_modules()
+
+for module in list_of_modules:
     # used to be client_panorama.dll, moved to client.dll during 2020
-    if(tmp.name=="client.dll"):
+    if module.name == "client.dll":
         print('found client.dll')
-        off_clientdll=tmp.lpBaseOfDll
+        off_clientdll = module.lpBaseOfDll
         break
+
+
 list_of_modules=handle.list_modules()
 while(list_of_modules!=None):
     tmp=next(list_of_modules)
     if(tmp.name=="engine2.dll"):
         print('found engine2.dll')
-        off_enginedll=tmp.lpBaseOfDll
+        off_engine2dll=tmp.lpBaseOfDll
         break
-
 # not sure what this bit does? sets up reading/writing I guess
 OpenProcess = windll.kernel32.OpenProcess
 CloseHandle = windll.kernel32.CloseHandle
@@ -98,7 +99,7 @@ SAVE_TRAIN_DATA = True
 IS_PAUSE = False # pause saving of data
 n_loops = 0 # how many times loop through 
 training_data=[]
-img_small = grab_window(window_title='Counter-Strike 2', game_resolution=cs2_game_res, SHOW_IMAGE=False)
+img_small = grab_window(window_title="Counter-Strike 2", game_resolution=(1024, 768), SHOW_IMAGE=False)
 print('starting loop, press q to quit...')
 while True:
     loop_start_time = time.time()
@@ -112,19 +113,10 @@ while True:
         break
 
     curr_vars={}
-    
-    dwClient = off_enginedll + dwNetworkGameClient
-    dwClientState = dwClient + dwNetworkGameClient_signOnState
-    dwClientState_ViewAngles = off_clientdll + dwViewAngles
 
     # grab address of ME = player, and see what observation mode I'm in
-    dwLocalPlayer = off_clientdll + dwLocalPlayerPawn
-    # player = read_memory(game, off_clientdll + dwLocalPlayerController and off_clientdll + dwLocalPlayerPawn, "i")
-    # curr_vars['obs_mode'] = read_memory(game, player + m_iObserverMode, 'i')
-    player = read_memory(game, off_clientdll + dwLocalPlayer, "i")
-    curr_vars['obs_mode'] = read_memory(game, player + m_iObserverMode,'i')
-
-
+    player = read_memory(game,(off_clientdll + dwLocalPlayerPawn), "q")
+    curr_vars['obs_mode'] = read_memory(game,(player + m_iObserverMode),'i')
     # --- get GSI info
     server.handle_request()
 
@@ -167,7 +159,7 @@ while True:
                 curr_vars['gsi_ammo'] = curr_vars['gsi_weap_active']['ammo_clip']
 
     # --- get RAM info
-    if curr_vars['obs_mode']==1: # figure out which player I'm observing
+    if curr_vars['obs_mode']==4: # figure out which player I'm observing
         obs_handle = read_memory(game,(player + m_hObserverTarget),'i')
         obs_id = (obs_handle & 0xFFF)
         obs_address = read_memory(game,off_clientdll + dwEntityList + ((obs_handle & 0xFFF)-1)*0x10, "i")
@@ -175,43 +167,33 @@ while True:
         obs_address = player
         obs_id=None
         
-    
     # get player info
-    # m_iHealth = off_enginedll + obs_address #Memory Address Formula Calculation
-    
-    
-    curr_vars['obs_health'] = read_memory(game,(obs_address + m_iHealth ), "i")
+    curr_vars['obs_health'] = read_memory(game,(obs_address + m_iHealth), "i")
     curr_vars['obs_fov'] = read_memory(game,(obs_address + m_iFOVStart),'i') # m_iFOVStart m_iFOV
     curr_vars['obs_scope'] = read_memory(game,(obs_address + m_bIsScoped),'b')
-    
+
     # get player position, x,y,z and height
-    m_vecOrigin = off_clientdll + dwViewMatrix #Memory Address Formula Calculation
-    
-    
-    
-    curr_vars['localpos1'] = read_memory(game,(obs_address + m_vecOrigin), "f") #+ read_memory(game,(vecorigin + m_vecViewOffset + 0x104), "f")
-    # curr_vars['localpos2'] = read_memory(game,(obs_address + m_vecOrigin + 0x4), "f") #+ read_memory(game,(vecorigin + m_vecViewOffset + 0x108), "f")
-    # curr_vars['localpos3'] = read_memory(game,(obs_address + m_vecOrigin + 0x8), "f") #+ read_memory(game,(obs_address + 0x10C), "f")
-    # curr_vars['height'] = read_memory(game,(obs_address + m_vecViewOffset + 0x8), "f") # this returns z height of player, goes between 64.06 and 46.04
+    curr_vars['localpos1'] = read_memory(game,(obs_address + m_vOldOrigin), "f") #+ read_memory(game,(vecorigin + m_vecViewOffset + 0x104), "f")
+    curr_vars['localpos2'] = read_memory(game,(obs_address + m_vOldOrigin + 0x4), "f") #+ read_memory(game,(vecorigin + m_vecViewOffset + 0x108), "f")
+    curr_vars['localpos3'] = read_memory(game,(obs_address + m_vOldOrigin + 0x8), "f") #+ read_memory(game,(obs_address + 0x10C), "f")
+    curr_vars['height'] = read_memory(game,(obs_address + m_vecViewOffset + 0x8), "f") # this returns z height of player, goes between 64.06 and 46.04
 
     # get player velocity, x,y,z
-    # m_vecVelocity = dwLocalPlayerPawn and off_clientdll
-    
-    
     curr_vars['vel_1'] = read_memory(game,(obs_address + m_vecVelocity), "f") 
     curr_vars['vel_2'] = read_memory(game,(obs_address + m_vecVelocity + 0x4), "f")
-    # curr_vars['vel_3'] = read_memory(game,(obs_address + m_vecVelocity + 0x8), "f")
+    curr_vars['vel_3'] = read_memory(game,(obs_address + m_vecVelocity + 0x8), "f")
     # curr_vars['vel_mag'] = np.sqrt(curr_vars['vel_1']*2 + curr_vars['vel_2']*2 )
+    curr_vars['vel_mag'] = np.sqrt(np.abs(curr_vars['vel_1'])**2 + np.abs(curr_vars['vel_2'])**2)
 
-    # get player view angle, something like yaw and vertical angle
-    dwClient = off_enginedll + dwNetworkGameClient
-    dwClientState = dwClient + dwNetworkGameClient_signOnState
-    dwClientState_ViewAngles = off_clientdll + dwViewAngles
-    
-    enginepointer = read_memory(game,(off_enginedll + dwClientState), "i")
-    curr_vars['viewangle_vert'] = read_memory(game,(enginepointer + dwClientState_ViewAngles), "f")
-    curr_vars['viewangle_xy'] = read_memory(game,(enginepointer + dwClientState_ViewAngles + 0x4), "f")
 
+    #get player view angle, something like yaw and vertical angle
+    # dwClient = off_engine2dll + dwNetworkGameClient
+    # dwClientState = dwClient + dwNetworkGameClient_signOnState
+    # dwClientState_ViewAngles = off_clientdll + dwViewAngles 
+
+    # enginepointer = read_memory(game, (off_engine2dll + 461278 ), "i")
+    curr_vars['viewangle_vert'] = read_memory(game,(off_clientdll + dwViewAngles), "f")
+    curr_vars['viewangle_xy'] = read_memory(game,(off_clientdll  + dwViewAngles + 0x4), "f")
 
     # zvert_rads is 0 when staring at ground, pi when starting at ceiling
     curr_vars['zvert_rads'] = (-curr_vars['viewangle_vert'] + 90)/360 * (2*np.pi)
@@ -326,9 +308,97 @@ while True:
 
     # grab image
     if SAVE_TRAIN_DATA:
-        img_small = grab_window(window_title='Counter-Strike 2', game_resolution=cs2_game_res, SHOW_IMAGE=is_show_img)
+        img_small = grab_window(window_title="Counter-Strike 2", game_resolution=(1024, 768), SHOW_IMAGE=is_show_img)
         # we put the image grab last as want the time lag to match when
         # will be running fwd pass through NN
 
     wait_for_loop_end(loop_start_time, loop_fps, n_loops, is_clear_decals=True)
+
     
+
+
+
+
+
+if False:
+    # rough code trying to find offsets myself (didn't work v well)
+    
+    # dwClientState = 5808076 # new one december 2021
+    dwClientState = 5804012 # old one 25th August 2021
+    engine2pointer = read_memory(game,(off_engine2dll+ dwClientState), "i")
+    engine2pointer = read_memory(game,(off_engine2dll + dwClientState_State), "i")
+    engine2pointer = read_memory(game,(off_engine2dll + dwClientState_GetLocalPlayer), "i")
+    engine2pointer = read_memory(game,(dwClientState_ViewAngles), "f")
+    engine2pointer = read_memory(game,(engine2pointer), "i")
+    engine2pointer = read_memory(game,(off_engine2dll), "i")
+
+    curr_vars['viewangle_vert'] = read_memory(game,(engine2pointer + dwClientState_ViewAngles), "f")
+    curr_vars['viewangle_xy'] = read_memory(game,(engine2pointer + dwClientState_ViewAngles + 0x4), "f")
+
+    store_vals={}
+    for i in range(-1000000,1000000):
+        val = read_memory(game,(engine2pointer + i), "f")
+        store_vals[i] = val
+
+    # no change to variable of interest
+    store_vals2={}
+    for i in range(-1000000,1000000):
+        val = read_memory(game,(engine2pointer + i), "f")
+        store_vals2[i] = val
+
+    # make change to game
+    store_vals3={}
+    for i in range(-1000000,1000000):
+        val = read_memory(game,(engine2pointer + i), "f")
+        store_vals3[i] = val
+
+    potential_i=[]
+    for i in range(-1000000,1000000):
+        val_1 = store_vals[i]
+        val_2 = store_vals2[i]
+        val_3 = store_vals3[i]
+        if val_1 == val_2 and val_2!=val_3:
+            if np.abs(val_1)<100 and np.abs(val_2)<100 and np.abs(val_3)<100:
+                if np.abs(val_1)>1e-10 or np.abs(val_2)>1e-10 or np.abs(val_3)>1e-10:
+                    print(i,val_1, val_2, val_3)
+                    potential_i.append(i)
+
+    for i in potential_i:
+    # for i in [9373,9676,9680]:
+        print('\n',i)
+        for _ in range(20):
+            print(read_memory(game,(engine2pointer + i), "f"))
+            time.sleep(0.1)
+
+    range_=10000
+    store_vals={}
+    for i in range(5804012-range_, 5808076+range_):
+        engine2pointer = read_memory(game,(off_engine2dll + i), "i")
+        val = read_memory(game,(engine2pointer + dwClientState_ViewAngles), "f")
+        store_vals[i] = val
+
+    time.sleep(1)
+    store_vals2={}
+    for i in range(5804012-range_, 5808076+range_):
+        engine2pointer = read_memory(game,(off_engine2dll + i), "i")
+        val = read_memory(game,(engine2pointer + dwClientState_ViewAngles), "f")
+        store_vals2[i] = val
+
+    store_vals3={}
+    for i in range(5804012-range_, 5808076+range_):
+        engine2pointer = read_memory(game,(off_engine2dll + i), "i")
+        val = read_memory(game,(engine2pointer + dwClientState_ViewAngles), "f")
+        store_vals3[i] = val
+
+    potential_i=[]
+    for i in range(5804012-range_, 5808076+range_):
+        val_1 = store_vals[i]
+        val_2 = store_vals2[i]
+        val_3 = store_vals3[i]
+        if val_1 == val_2 and val_2!=val_3:
+            print(i,val_1, val_2, val_3)
+            potential_i.append(i)
+            # if np.abs(val_1)<100 and np.abs(val_2)<100 and np.abs(val_3)<100:
+            #     if np.abs(val_1)>1e-10 or np.abs(val_2)>1e-10 or np.abs(val_3)>1e-10:
+            #         print(i,val_1, val_2, val_3)
+            #         potential_i.append(i)
