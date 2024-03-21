@@ -51,10 +51,9 @@ from dm_hazedumper_offsets import *
 
 save_name = 'dm_test_expert_' # stub name of file to save as
 
-folder_name = 'D:/NPY_Files/'
+folder_name = 'D:/NPY_Files/npy/'
 # starting_value = get_highest_num(save_name, folder_name)+1 # set to one larger than whatever found so far
 starting_value = 1
-
 
 is_show_img = False
 
@@ -66,28 +65,27 @@ if(hwin_csgo):
     handle.open_process_from_id(pid[1])
     csgo_entry = handle.process_base
 else:
-    print('CSGO wasnt found')
+    print('CS2 wasnt found')
     os.system('pause')
     sys.exit()
 
 # now find two dll files needed
-list_of_modules = handle.list_modules()
-
-for module in list_of_modules:
+list_of_modules=handle.list_modules()
+while(list_of_modules!=None):
+    tmp=next(list_of_modules)
     # used to be client_panorama.dll, moved to client.dll during 2020
-    if module.name == "client.dll":
+    if(tmp.name=="client.dll"):
         print('found client.dll')
-        off_clientdll = module.lpBaseOfDll
+        off_clientdll=tmp.lpBaseOfDll
         break
-
-
 list_of_modules=handle.list_modules()
 while(list_of_modules!=None):
     tmp=next(list_of_modules)
     if(tmp.name=="engine2.dll"):
-        print('found engine2.dll')
-        off_engine2dll=tmp.lpBaseOfDll
+        print('found engine.dll')
+        off_enginedll=tmp.lpBaseOfDll
         break
+
 # not sure what this bit does? sets up reading/writing I guess
 OpenProcess = windll.kernel32.OpenProcess
 CloseHandle = windll.kernel32.CloseHandle
@@ -117,6 +115,7 @@ while True:
     # grab address of ME = player, and see what observation mode I'm in
     player = read_memory(game,(off_clientdll + dwLocalPlayerPawn), "q")
     curr_vars['obs_mode'] = read_memory(game,(player + m_iObserverMode),'i')
+
     # --- get GSI info
     server.handle_request()
 
@@ -182,18 +181,12 @@ while True:
     curr_vars['vel_1'] = read_memory(game,(obs_address + m_vecVelocity), "f") 
     curr_vars['vel_2'] = read_memory(game,(obs_address + m_vecVelocity + 0x4), "f")
     curr_vars['vel_3'] = read_memory(game,(obs_address + m_vecVelocity + 0x8), "f")
-    # curr_vars['vel_mag'] = np.sqrt(curr_vars['vel_1']*2 + curr_vars['vel_2']*2 )
-    curr_vars['vel_mag'] = np.sqrt(np.abs(curr_vars['vel_1'])**2 + np.abs(curr_vars['vel_2'])**2)
+    curr_vars['vel_mag'] = np.sqrt(curr_vars['vel_1']**2 + curr_vars['vel_2']**2 )
 
-
-    #get player view angle, something like yaw and vertical angle
-    # dwClient = off_engine2dll + dwNetworkGameClient
-    # dwClientState = dwClient + dwNetworkGameClient_signOnState
-    # dwClientState_ViewAngles = off_clientdll + dwViewAngles 
-
-    # enginepointer = read_memory(game, (off_engine2dll + 461278 ), "i")
+    # get player view angle, something like yaw and vertical angle
+    # enginepointer = read_memory(game,(off_clientdll + dwViewAngles), "i")
     curr_vars['viewangle_vert'] = read_memory(game,(off_clientdll + dwViewAngles), "f")
-    curr_vars['viewangle_xy'] = read_memory(game,(off_clientdll  + dwViewAngles + 0x4), "f")
+    curr_vars['viewangle_xy'] = read_memory(game,(off_clientdll + dwViewAngles + 0x4), "f")
 
     # zvert_rads is 0 when staring at ground, pi when starting at ceiling
     curr_vars['zvert_rads'] = (-curr_vars['viewangle_vert'] + 90)/360 * (2*np.pi)
@@ -308,7 +301,7 @@ while True:
 
     # grab image
     if SAVE_TRAIN_DATA:
-        img_small = grab_window(window_title="Counter-Strike 2", game_resolution=(1024, 768), SHOW_IMAGE=is_show_img)
+        img_small = grab_window(window_title="Counter-Strike 2", game_resolution=(1024, 768), SHOW_IMAGE=False)
         # we put the image grab last as want the time lag to match when
         # will be running fwd pass through NN
 
@@ -325,31 +318,31 @@ if False:
     
     # dwClientState = 5808076 # new one december 2021
     dwClientState = 5804012 # old one 25th August 2021
-    engine2pointer = read_memory(game,(off_engine2dll+ dwClientState), "i")
-    engine2pointer = read_memory(game,(off_engine2dll + dwClientState_State), "i")
-    engine2pointer = read_memory(game,(off_engine2dll + dwClientState_GetLocalPlayer), "i")
-    engine2pointer = read_memory(game,(dwClientState_ViewAngles), "f")
-    engine2pointer = read_memory(game,(engine2pointer), "i")
-    engine2pointer = read_memory(game,(off_engine2dll), "i")
+    enginepointer = read_memory(game,(off_enginedll+ dwClientState), "i")
+    enginepointer = read_memory(game,(off_enginedll + dwClientState_State), "i")
+    enginepointer = read_memory(game,(off_enginedll + dwClientState_GetLocalPlayer), "i")
+    enginepointer = read_memory(game,(dwClientState_ViewAngles), "f")
+    enginepointer = read_memory(game,(enginepointer), "i")
+    enginepointer = read_memory(game,(off_enginedll), "i")
 
-    curr_vars['viewangle_vert'] = read_memory(game,(engine2pointer + dwClientState_ViewAngles), "f")
-    curr_vars['viewangle_xy'] = read_memory(game,(engine2pointer + dwClientState_ViewAngles + 0x4), "f")
+    curr_vars['viewangle_vert'] = read_memory(game,(enginepointer + dwClientState_ViewAngles), "f")
+    curr_vars['viewangle_xy'] = read_memory(game,(enginepointer + dwClientState_ViewAngles + 0x4), "f")
 
     store_vals={}
     for i in range(-1000000,1000000):
-        val = read_memory(game,(engine2pointer + i), "f")
+        val = read_memory(game,(enginepointer + i), "f")
         store_vals[i] = val
 
     # no change to variable of interest
     store_vals2={}
     for i in range(-1000000,1000000):
-        val = read_memory(game,(engine2pointer + i), "f")
+        val = read_memory(game,(enginepointer + i), "f")
         store_vals2[i] = val
 
     # make change to game
     store_vals3={}
     for i in range(-1000000,1000000):
-        val = read_memory(game,(engine2pointer + i), "f")
+        val = read_memory(game,(enginepointer + i), "f")
         store_vals3[i] = val
 
     potential_i=[]
@@ -367,27 +360,27 @@ if False:
     # for i in [9373,9676,9680]:
         print('\n',i)
         for _ in range(20):
-            print(read_memory(game,(engine2pointer + i), "f"))
+            print(read_memory(game,(enginepointer + i), "f"))
             time.sleep(0.1)
 
     range_=10000
     store_vals={}
     for i in range(5804012-range_, 5808076+range_):
-        engine2pointer = read_memory(game,(off_engine2dll + i), "i")
-        val = read_memory(game,(engine2pointer + dwClientState_ViewAngles), "f")
+        enginepointer = read_memory(game,(off_enginedll + i), "i")
+        val = read_memory(game,(enginepointer + dwClientState_ViewAngles), "f")
         store_vals[i] = val
 
     time.sleep(1)
     store_vals2={}
     for i in range(5804012-range_, 5808076+range_):
-        engine2pointer = read_memory(game,(off_engine2dll + i), "i")
-        val = read_memory(game,(engine2pointer + dwClientState_ViewAngles), "f")
+        enginepointer = read_memory(game,(off_enginedll + i), "i")
+        val = read_memory(game,(enginepointer + dwClientState_ViewAngles), "f")
         store_vals2[i] = val
 
     store_vals3={}
     for i in range(5804012-range_, 5808076+range_):
-        engine2pointer = read_memory(game,(off_engine2dll + i), "i")
-        val = read_memory(game,(engine2pointer + dwClientState_ViewAngles), "f")
+        enginepointer = read_memory(game,(off_enginedll + i), "i")
+        val = read_memory(game,(enginepointer + dwClientState_ViewAngles), "f")
         store_vals3[i] = val
 
     potential_i=[]
