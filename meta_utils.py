@@ -1,22 +1,25 @@
 import os
 import time
 import struct
+import ctypes
 import math
 import random
 import win32api
 import win32gui
 import win32process
 from ctypes  import *
+from ctypes import wintypes
 from pymem   import *
 import numpy as np
 import requests
-
+from win32process import ReadProcessMemory
+from win32api import OpenProcess, CloseHandle
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import sys
 import json
 
-ReadProcessMemory = windll.kernel32.ReadProcessMemory
-WriteProcessMemory = windll.kernel32.WriteProcessMemory
+ReadProcessMemory = ctypes.windll.kernel32.ReadProcessMemory
+WriteProcessMemory = ctypes.windll.kernel32.WriteProcessMemory
 
 # stuff for RAM...
 def update_offsets(raw):
@@ -24,7 +27,7 @@ def update_offsets(raw):
     raw = raw.replace('[netvars]','#netvars\n')
     try:
         open('dm_hazedumper_offsets.py','w').write(raw)
-        print('updated succesfuly')
+        print('updated succesfully')
     except:
         print('couldnt open offsets.py to preform update')
     return
@@ -41,13 +44,18 @@ def getlength(type):
         return 1 # maybe 4
     elif type == 'h': #tp added
         return 4 
+    elif type == 'q':
+        return 8
+
+
 
 def read_memory(game, address, type):
+    address = ctypes.c_void_p(address)
     buffer = (ctypes.c_byte * getlength(type))()
     bytesRead = ctypes.c_ulonglong(0)
     readlength = getlength(type)
-    ReadProcessMemory(game, address, buffer, readlength, byref(bytesRead))
-    return struct.unpack(type, buffer)[0]
+    ctypes.windll.kernel32.ReadProcessMemory(game, address, buffer, readlength, byref(bytesRead))
+    return struct.unpack(type,buffer)[0]
 
 # stuff for game state integration...
 
@@ -123,10 +131,3 @@ class MyRequestHandler(BaseHTTPRequestHandler):
         return
 
 server = MyServer(('localhost', 3000), 'MYTOKENHERE', MyRequestHandler)
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 3be35e0 (Great Changes)
-=======
->>>>>>> 99353e8 (Better Changes we have made)
